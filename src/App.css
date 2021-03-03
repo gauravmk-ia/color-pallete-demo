@@ -1,0 +1,15 @@
+.title {
+  padding: 1rem;
+  margin: 10px;
+  background-color: #cfe2ff;
+  border-radius: 0.25rem;
+  color: #084298;
+  border-color: #b6d4fe;
+}
+
+.color-pallete-container {
+  margin: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
