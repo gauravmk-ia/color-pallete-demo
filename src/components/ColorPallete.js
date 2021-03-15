@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import "./ColorPallete.css";
 
 function ColorPallete() {
-  const [id] = useState(window.performance.now());
+  const canvasRef = useRef(null);
   const rgba = () => {
     const o = Math.round,
       r = Math.random,
@@ -21,7 +21,8 @@ function ColorPallete() {
   };
 
   const draw = () => {
-    let ctx = document.getElementById(id).getContext("2d");
+    const canvas = canvasRef.current;
+    let ctx = canvas.getContext("2d");
     for (let i = 0; i < 256; i++) {
       for (let j = 0; j < 128; j++) {
         ctx.fillStyle = rgba();
@@ -32,11 +33,7 @@ function ColorPallete() {
 
   useEffect(() => draw());
 
-  return (
-    <div className="color-pallete">
-      <canvas id={id} width="256" height="128"></canvas>
-    </div>
-  );
+  return <canvas ref={canvasRef} width="256" height="128"></canvas>;
 }
 
 export default ColorPallete;
