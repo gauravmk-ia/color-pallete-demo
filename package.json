@@ -20,7 +20,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test -u",
+    "test": "jest --coverage --updateSnapshot",
     "test:watch": "npm test -- --watch",
     "eject": "react-scripts eject"
   },
@@ -43,5 +43,10 @@
     ]
   },
   "devDependencies": {
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "./src/setupTests.js"
+    ]
   }
 }
