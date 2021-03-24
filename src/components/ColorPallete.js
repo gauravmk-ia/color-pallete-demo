@@ -1,10 +1,13 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import "./ColorPallete.css";
 
-function ColorPallete() {
-  const canvasRef = useRef(null);
+class ColorPallete extends React.Component {
+  constructor(props) {
+    super(props);
+    this.canvasRef = React.createRef(null);
+  }
 
-  function generateRGB() {
+  generateRGB() {
     const colors = [];
     for (let i = 0; i < 256; i += 8) {
       for (let j = 0; j < 256; j += 8) {
@@ -16,8 +19,8 @@ function ColorPallete() {
     return colors;
   }
 
-  function draw(colors) {
-    const canvas = canvasRef.current;
+  draw(colors) {
+    const canvas = this.canvasRef.current;
     let ctx = canvas.getContext("2d");
     let count = 0;
     for (let i = 0; i < 256; i++) {
@@ -28,12 +31,14 @@ function ColorPallete() {
     }
   }
 
-  useEffect(() => {
-    let colors = generateRGB();
-    draw(colors);
-  });
+  componentDidMount() {
+    let colors = this.generateRGB();
+    this.draw(colors);
+  }
 
-  return <canvas ref={canvasRef} width="256" height="128"></canvas>;
+  render() {
+    return <canvas id="canvas" ref={this.canvasRef} width="256" height="128"></canvas>;
+  }
 }
 
 export default ColorPallete;
