@@ -1,10 +1,10 @@
-import React from "react";
+import React, { Component, createRef } from "react";
 import "./ColorPallete.css";
 
-class ColorPallete extends React.Component {
+class ColorPallete extends Component {
   constructor(props) {
     super(props);
-    this.canvasRef = React.createRef(null);
+    this.canvasRef = createRef(null);
   }
 
   generateRGB() {
@@ -37,7 +37,14 @@ class ColorPallete extends React.Component {
   }
 
   render() {
-    return <canvas id="canvas" ref={this.canvasRef} width="256" height="128"></canvas>;
+    return (
+      <canvas
+        id="canvas"
+        ref={this.canvasRef}
+        width="256"
+        height="128"
+      ></canvas>
+    );
   }
 }
 
