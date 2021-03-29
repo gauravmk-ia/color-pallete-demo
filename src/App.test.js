@@ -7,6 +7,13 @@ import "jest-canvas-mock";
 
 configure({ adapter: new Adapter() });
 
+Object.defineProperty(window, "localStorage", {
+  get: jest.fn(() =>  global.localStorage),
+  configurable: true,
+  enumerable: true,
+  writable: true,
+});
+
 describe("ColorPallete", () => {
   it("should render my component", () => {
     const component = mount(<App />);
